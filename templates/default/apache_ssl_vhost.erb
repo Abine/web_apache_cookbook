@@ -1,11 +1,11 @@
-#
+# 
 # Cookbook Name:: web_apache
 #
 # Copyright RightScale, Inc. All rights reserved.
 # All access and use subject to the RightScale Terms of Service available at
 # http://www.rightscale.com/terms.php and, if applicable, other agreements
 # such as a RightScale Master Subscription Agreement.
-#
+# 
 # Managed by RightScale
 # DO NOT EDIT BY HAND
 #
@@ -24,11 +24,6 @@
     Allow from all
   </Directory>
 
-  # Setup the logs in the appropriate directory
-  CustomLog <%= node[:apache][:log_dir] %>/access_log combined
-  ErrorLog  <%= node[:apache][:log_dir] %>/error_log
-  LogLevel warn
-
   RewriteEngine On
   # Uncomment for rewrite debugging
   #RewriteLog <%= node[:apache][:log_dir] %>/http_rewrite_log
@@ -42,6 +37,15 @@
   # Enable status page for monitoring purposes
   RewriteCond %{REMOTE_ADDR} ^(127.0.0.1)
   RewriteRule ^(/server-status) $1 [H=server-status,L]
+
+  # Setup the logs in the appropriate directory
+  <% if (node[:web_apache][:system_log] == 'true') -%>
+  CustomLog "|/usr/bin/logger -t apache -i -p local2.notice" <%= node[:web_apache][:log_format] %>
+  ErrorLog syslog:local1
+  <% else -%>
+  CustomLog <%= node[:apache][:log_dir] %>/access.log <%= node[:web_apache][:log_format] %>
+  ErrorLog  <%= node[:apache][:log_dir] %>/error.log
+  <% end -%>
 
   # Serve any existing local files directly (except actionable ones)
   RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} -f
@@ -77,7 +81,7 @@
   BrowserMatch ^Mozilla/4\.0[678] no-gzip
   BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 
-  SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown downgrade-1.0
+  SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown downgrade-1.0 
 
   # Proxy the rest to the load balancer
   RewriteRule ^/(.*)$ http://127.0.0.1:85%{REQUEST_URI} [P,QSA,L]

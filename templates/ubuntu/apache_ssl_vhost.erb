@@ -24,11 +24,6 @@
     Allow from all
   </Directory>
 
-  # Setup the logs in the appropriate directory
-  CustomLog <%= node[:apache][:log_dir] %>/access.log combined
-  ErrorLog  <%= node[:apache][:log_dir] %>/error.log
-  LogLevel warn
-
   RewriteEngine On
   # Uncomment for rewrite debugging
   #RewriteLog <%= node[:apache][:log_dir] %>/http_rewrite.log
@@ -42,6 +37,15 @@
   # Enable status page for monitoring purposes
   RewriteCond %{REMOTE_ADDR} ^(127.0.0.1)
   RewriteRule ^(/server-status) $1 [H=server-status,L]
+
+  # Setup the logs in the appropriate directory
+  <% if node[:web_apache][:system_log] == 'true' -%>
+  CustomLog "|/usr/bin/logger -t apache -i -p local2.notice" <%= node[:web_apache][:log_format] %>
+  ErrorLog syslog:local1
+  <% else -%>
+  CustomLog <%= node[:apache][:log_dir] %>/access.log <%= node[:web_apache][:log_format] %>
+  ErrorLog  <%= node[:apache][:log_dir] %>/error.log
+  <% end -%>
 
   # Serve any existing local files directly (except actionable ones)
   RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} -f

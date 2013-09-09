@@ -71,6 +71,45 @@ attribute "web_apache/mpm",
   :choice => ["prefork", "worker"],
   :default => "prefork"
 
+attribute "web_apache/system_log",
+  :display_name => "Use system log",
+  :description => "Use the system log daemon to log Apache events (the error log and access log) instead of a local log file. Works well when the system is set up to forward log data to a remote server.",
+  :required => "recommended",
+  :recipes => [
+    "web_apache::setup_frontend_ssl_vhost",
+    "web_apache::setup_frontend_http_vhost",
+    "web_apache::setup_frontend",
+    "web_apache::default"
+  ],
+  :choice => [ "true", "false" ],
+  :default => "false"
+
+attribute "web_apache/abine_hack",
+  :display_name => "Enable Abine's hack",
+  :description => "Enable the trademarked Abine 'Fall through to glass.abine.com' hack, necessary to get the website v2 off the ground. Only set true for an app server (not the load balancer).",
+  :required => "recommended",
+  :recipes => [
+    "web_apache::setup_frontend_ssl_vhost",
+    "web_apache::setup_frontend_http_vhost",
+    "web_apache::setup_frontend",
+    "web_apache::default"
+  ],
+  :choice => ["true", "false"],
+  :default => "false"
+
+attribute "web_apache/log_format",
+  :display_name => "Apache Log format",
+  :description => "Selects a format for the Apache access logs. These must be defined in the Apache configuration files ahead of time. Example: combined",
+  :required => "recommended",
+  :recipes => [
+    "web_apache::setup_frontend_ssl_vhost",
+    "web_apache::setup_frontend_http_vhost",
+    "web_apache::setup_frontend",
+    "web_apache::default"
+  ],
+  :choice => [ "combined", "common", "referer", "agent", "getabine_combined", "getabine_combined_forwarding"],
+  :default => "combined"
+
 attribute "web_apache/ssl_enable",
   :display_name => "SSL Enable",
   :description =>
@@ -123,6 +162,18 @@ attribute "web_apache/ssl_passphrase",
     "Your SSL passphrase. Example: cred:SSL_PASSPHRASE",
   :required => "optional",
   :default => "",
+  :recipes => [
+    "web_apache::setup_frontend_ssl_vhost",
+    "web_apache::setup_frontend"
+  ]
+
+attribute "web_apache/force_https",
+  :display_name => "Force HTTPS traffic",
+  :description =>
+    "Redirect HTTP traffic to HTTPS traffic",
+  :required => "recommended",
+  :default => "false",
+  :choice => ["true", "false"],
   :recipes => [
     "web_apache::setup_frontend_ssl_vhost",
     "web_apache::setup_frontend"

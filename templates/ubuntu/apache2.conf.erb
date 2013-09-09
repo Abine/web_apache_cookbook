@@ -1,0 +1,22 @@
+# ErrorLog: The location of the error log file.
+# If you do not specify an ErrorLog directive within a <VirtualHost>
+# container, error messages relating to that virtual host will be
+# logged here.  If you *do* define an error logfile for a <VirtualHost>
+# container, that host's errors will be logged there and not here.
+#
+<% if (node[:web_apache][:system_log] == 'true') -%>
+ErrorLog syslog:local1
+<% else -%>
+ErrorLog  <%= node[:apache][:log_dir] %>/error.log
+<% end -%>
+
+#
+# The following directives define some format nicknames for use with
+# a CustomLog directive (see below).
+#
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+LogFormat "%h %l %u %t \"%r\" %>s %b" common
+LogFormat "%{Referer}i -> %U" referer
+LogFormat "%{User-agent}i" agent
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" \"%{DNT}i\" \"%{X-DNT-Version}i\" \"%{X-DNT-OVersion}i\" \"%{X-DNT-Cohort}i\" \"%{PF-Plugin-Version}i\" \"%{PF-Plugin-Oversion}i\" \"%{PF-Plugin-Origin}i\"" getabine_combined
+LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" \"%{DNT}i\" \"%{X-DNT-Version}i\" \"%{X-DNT-OVersion}i\" \"%{X-DNT-Cohort}i\" \"%{PF-Plugin-Version}i\" \"%{PF-Plugin-Oversion}i\" \"%{PF-Plugin-Origin}i\"" getabine_combined_forwarding

@@ -6,6 +6,14 @@
 # http://www.rightscale.com/terms.php and, if applicable, other agreements
 # such as a RightScale Master Subscription Agreement.
 
+# Sending Apache logs to the system log provider
+default[:web_apache][:system_log] = "false"
+
+# Log format to use
+default[:web_apache][:log_format] = "combined"
+
+default[:web_apache][:abine_hack] = "false"
+
 # worker = multithreaded (when you need a great deal of scalability)
 # prefork = single-threaded (when you need stability or compatibility with older software)
 # for more info please visit: http://httpd.apache.org/docs/2.0/en/mpm.html
@@ -25,6 +33,7 @@ default[:web_apache][:ssl_certificate] = nil
 default[:web_apache][:ssl_certificate_chain] = nil
 default[:web_apache][:ssl_key] = nil
 default[:web_apache][:ssl_passphrase] = nil
+default[:web_apache][:force_https] = 'false'
 
 # Apache document root
 set[:web_apache][:docroot] = "/home/webapp/#{web_apache[:application_name]}"
