@@ -26,6 +26,11 @@ end
 # Calls the https://github.com/rightscale/cookbooks/blob/master/apache2/recipes/default.rb recipe.
 include_recipe "apache2"
 
+# Creates the document root for Apache.
+directory node[:web_apache][:docroot] do
+  recursive true
+end
+
 # Persist apache2 resource to node for use in other run lists.
 service "apache2" do
   action :nothing
@@ -82,6 +87,9 @@ end
 template File.join(node[:apache][:dir], 'conf.d', 'maintenance.conf') do
   backup false
   source "maintenance.conf.erb"
+  variables(
+    :maintenance_file => node[:web_apache][:maintenance_file]
+  )
   notifies :restart, resources(:service => "apache2")
 end
 

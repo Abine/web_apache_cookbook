@@ -26,7 +26,7 @@
 
   RewriteEngine On
   # Uncomment for rewrite debugging
-  #RewriteLog <%= node[:apache][:log_dir] %>/http_rewrite.log
+  #RewriteLog <%= @params[:apache_log_dir] %>/http_rewrite.log
   #RewriteLogLevel 9
 
   <% if node[:web_apache][:force_https] == 'true' %>
