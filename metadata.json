@@ -247,6 +247,7 @@
     "web_apache::default": "Runs web_apache::install_apache.",
     "web_apache::do_start": "Runs service apache start.",
     "web_apache::do_stop": "Runs service apache stop.",
+    "web_apache::joe_stop": "Runs service apache joe stop.",
     "web_apache::do_restart": "Runs service apache restart.",
     "web_apache::do_enable_default_site": "Enables the default vhost.",
     "web_apache::install_apache": "Installs and configures the Apache2 webserver.",

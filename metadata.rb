@@ -18,6 +18,9 @@ recipe "web_apache::do_start",
 recipe "web_apache::do_stop",
   "Runs service apache stop."
 
+recipe "web_apache::joe_stop",
+  "Runs service apache joe stop."
+
 recipe "web_apache::do_restart",
   "Runs service apache restart."
 
