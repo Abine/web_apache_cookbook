@@ -221,8 +221,9 @@ attribute "web_apache/maintenance_file",
   :description =>
     "Choose .json for mm lbs and .html for others",
   :required => "required",
-  :choice => ["/home/webapp/system/maintenance.html", "/home/webapp/system/maintenance.json"],
+  :choice => ["maintenance.html", "maintenance.json"],
   :recipes => [
     "web_apache::do_enable_maintenance_mode",
-    "web_apache::do_disable_maintenance_mode"
+    "web_apache::do_disable_maintenance_mode",
+    "web_apache::default"
   ]

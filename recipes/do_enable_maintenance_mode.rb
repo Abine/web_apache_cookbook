@@ -18,8 +18,8 @@
 
 rightscale_marker
 
-maintenance_file_dir = ::File.dirname(node[:web_apache][:maintenance_file])
-
+#maintenance_file_dir = ::File.dirname(node[:web_apache][:maintenance_file])
+maintenance_file_dir = "/home/webapp/system/"
 # Creating directory for maintenance page.
 directory maintenance_file_dir do
   recursive true
