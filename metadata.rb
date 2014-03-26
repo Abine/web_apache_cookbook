@@ -216,3 +216,13 @@ attribute "web_apache/allow_override",
     "web_apache::setup_frontend",
     "web_apache::default"
   ]
+attribute "web_apache/maintenance_file",
+  :display_name => "Select Maintenance File",
+  :description =>
+    "Choose .json for mm lbs and .html for others",
+  :required => "required",
+  :choice => ["/home/webapp/system/maintenance.html", "/home/webapp/system/maintenance.json"],
+  :recipes => [
+    "web_apache::do_enable_maintenance_mode",
+    "web_apache::do_disable_maintenance_mode"
+  ]

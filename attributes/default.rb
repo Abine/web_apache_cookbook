@@ -41,8 +41,8 @@ set[:web_apache][:docroot] = "/home/webapp/#{web_apache[:application_name]}"
 # Default servername for web_apache vhost file
 set[:web_apache][:server_name] = "localhost"
 
-# Maintenance mode attributes
-set[:web_apache][:maintenance_file] = "/home/webapp/system/maintenance.html"
+# Maintenance mode attributes, will be either "/home/webapp/system/maintenance.html" or "/home/webapp/system/maintenance.json" if app server should use json
+set[:web_apache][:maintenance_file] = 
 
 # Allow override default value
 default[:web_apache][:allow_override] = "None"
