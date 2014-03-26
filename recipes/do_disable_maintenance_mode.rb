@@ -8,10 +8,11 @@
 
 rightscale_marker
 
+maintenance_file = "/home/webapp/system/#{node[:web_apache][:maintenance_file]}"
 # Removes maintenance.html file.
-log "  Removing #{node[:web_apache][:maintenance_file]}"
-file node[:web_apache][:maintenance_file] do
+log "  Removing #{maintenance_file}"
+file maintenance_file do
   action :delete
   backup false
-  only_if { ::File.exists?(node[:web_apache][:maintenance_file]) }
+  only_if { ::File.exists?(maintenance_file) }
 end
