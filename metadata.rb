@@ -225,5 +225,6 @@ attribute "web_apache/maintenance_file",
   :recipes => [
     "web_apache::do_enable_maintenance_mode",
     "web_apache::do_disable_maintenance_mode",
+    "web_apache::install_apache",
     "web_apache::default"
   ]
