@@ -10,6 +10,15 @@
 # DO NOT EDIT BY HAND
 #
 
+<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
+	Header set Access-Control-Allow-Credentials true
+	Header set Access-Control-Allow-Headers content-type,accept
+	Header set Access-Control-Allow-Methods GET,CREATE,DELETE,POST,OPTIONS,PUT,INDEX
+	#Header set Access-Control-Allow-Origin http://abine-dnt-stage.s3-website-us-east-1.amazonaws.com
+	Header set Access-Control-Max-Age 1728000
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
