@@ -47,6 +47,11 @@
   ErrorLog  <%= node[:apache][:log_dir] %>/error.log
   <% end -%>
 
+  # For http://jira.abine.com:8080/browse/INFRA-63 to add support for a status page
+  <Directory /home/webapps/myapp/status>
+        DirectoryIndex index.html
+  </Directory>
+
   # Serve any existing local files directly (except actionable ones)
   RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} -f
   RewriteCond %{REQUEST_FILENAME} !\.php|\.jsp|\.do|\.action$ [NC]
