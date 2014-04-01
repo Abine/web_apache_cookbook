@@ -24,6 +24,11 @@
     Allow from all
   </Directory>
 
+   # For http://jira.abine.com:8080/browse/INFRA-63 to add support for a status page
+  <Directory  <%= @params[:docroot] %>/status>
+        DirectoryIndex index.html
+  </Directory>
+
   RewriteEngine On
   # Uncomment for rewrite debugging
   #RewriteLog <%= @params[:apache_log_dir] %>/http_rewrite_log
@@ -34,12 +39,8 @@
   # explicitly include it here.
   Include conf.d/maintenance.conf
 
-   # For http://jira.abine.com:8080/browse/INFRA-63 to add support for a status page
-  <Directory  <%= @params[:docroot] %>/status>
-        DirectoryIndex index.html
-  </Directory>
 
-   
+
 
   # Enable status page for monitoring purposes
   RewriteCond %{REMOTE_ADDR} ^(127.0.0.1)
