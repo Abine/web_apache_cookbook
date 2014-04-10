@@ -27,6 +27,9 @@ when "centos", "redhat"
   set[:web_apache][:config_subdir] = "httpd"
 end
 
+#Setup ServerAlias's
+set[:web_apache][:server_aliases] = 
+
 # Disabling ssl by default
 default[:web_apache][:ssl_enable] = false
 default[:web_apache][:ssl_certificate] = nil

@@ -11,7 +11,6 @@
 #
 
 <VirtualHost *:<%= @params[:vhost_port] %>>
-  ServerAlias license.abine.com mm.abine.com email.abine.com mapping.abine.com payments.abine.com fraud.abine.com phone.abine.com
   ServerName <%= @params[:server_name] %>
   DocumentRoot <%= @params[:docroot] %>
   <DirectoryMatch  /\.git/|/\.svn/ >
