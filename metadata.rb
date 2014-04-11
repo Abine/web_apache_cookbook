@@ -230,14 +230,13 @@ attribute "web_apache/maintenance_file",
   ]
 attribute "web_apache/server_aliases",
   :display_name => "Select appropriate environment alias's for apache config",
-  :description =>
-    "Select appropriate environment alias's for apache config",
+  :description => "Select appropriate environment alias's for apache config",
   :required => "required",
   :choice => ["license.abine.com mm.abine.com email.abine.com mapping.abine.com payments.abine.com fraud.abine.com phone.abine.com", 
     "test-license.abine.com test-mm.abine.com test-email.abine.com test-mapping.abine.com test-payments.abine.com test-fraud.abine.com test-phone.abine.com", 
     "staging-license.abine.com staging-mm.abine.com staging-email.abine.com staging-mapping.abine.com staging-payments.abine.com staging-fraud.abine.com staging-phone.abine.com",
     "demo-license.abine.com demo-mm.abine.com demo-email.abine.com demo-mapping.abine.com demo-payments.abine.com demo-fraud.abine.com demo-phone.abine.com"
-  ]
+  ],
   :recipes => [
     "web_apache::default"
   ]
