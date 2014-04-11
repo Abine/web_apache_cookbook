@@ -12,6 +12,7 @@
 
 <VirtualHost *:<%= @params[:vhost_port] %>>
   ServerName <%= @params[:server_name] %>
+  ServerAlias <%= node[:web_apache][:server_aliases] %>
   DocumentRoot <%= @params[:docroot] %>
   <DirectoryMatch  /\.git/|/\.svn/ >
     Deny from all
