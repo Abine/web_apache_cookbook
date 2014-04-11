@@ -238,6 +238,7 @@ attribute "web_apache/server_aliases",
     "demo-license.abine.com demo-mm.abine.com demo-email.abine.com demo-mapping.abine.com demo-payments.abine.com demo-fraud.abine.com demo-phone.abine.com"
   ],
   :recipes => [
-    "web_apache::default"
+    "web_apache::default",
+    "web_apache::setup_frontend"
   ]
 
