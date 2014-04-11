@@ -259,8 +259,8 @@
     },
 
     "web_apache/server_aliases": {
-    "display_name": "Select appropriate environment alias's for apache config",
-    "description": "Select appropriate environment alias's for apache config",
+    "display_name": "Select appropriate environment alias for apache Alias config",
+    "description": "Select appropriate environment for apache Alias config",
     "required": "required",
     "choice": ["Production", "Stage", "Test", "Demo"],
     "recipes": [
