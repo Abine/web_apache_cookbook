@@ -28,7 +28,7 @@ when "centos", "redhat"
 end
 
 #Setup ServerAlias's
-set[:web_apache][:server_aliases] = 
+#set[:web_apache][:server_aliases] = 
 
 # Disabling ssl by default
 default[:web_apache][:ssl_enable] = false
@@ -46,6 +46,7 @@ set[:web_apache][:server_name] = "localhost"
 
 # Maintenance mode attributes, will be either "maintenance.html" or "maintenance.json" if app server should use json
 set[:web_apache][:maintenance_file] = "maintenance.json"
+
 
 # Allow override default value
 default[:web_apache][:allow_override] = "None"
