@@ -18,9 +18,6 @@ recipe "web_apache::do_start",
 recipe "web_apache::do_stop",
   "Runs service apache stop."
 
-recipe "web_apache::joe_stop",
-  "Runs service apache joe stop."
-
 recipe "web_apache::do_restart",
   "Runs service apache restart."
 
@@ -236,5 +233,14 @@ attribute "web_apache/server_aliases",
   :recipes => [
     "web_apache::default",
     "web_apache::setup_frontend"
+  ]
+  attribute "web_apache/KeepAlive",
+  :display_name => "Apache KeepAlive setting",
+  :description => "This is set to On on all servers except Avira",
+  :required => "required",
+  :choice => ["On", "Off"],
+  :default => "On",
+  :recipes => [
+    "web_apache::default",
   ]
 

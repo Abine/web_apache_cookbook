@@ -258,6 +258,17 @@
       "type": "string"
     },
 
+    "web_apache/KeepAlive": {
+    "display_name": "Apache KeepAlive setting",
+    "description": "This is set to On on all servers except Avira",
+    "required": "required",
+    "choice": ["On", "Off"],
+    "recipes": [ 
+      "web_apache::default"
+    ],
+      "calculated": false,
+      "type": "string"
+    },
     "web_apache/server_aliases": {
     "display_name": "Select appropriate environment alias for apache Alias config",
     "description": "Select appropriate environment for apache Alias config",
@@ -278,7 +289,6 @@
     "web_apache::default": "Runs web_apache::install_apache.",
     "web_apache::do_start": "Runs service apache start.",
     "web_apache::do_stop": "Runs service apache stop.",
-    "web_apache::joe_stop": "Runs service apache joe stop.",
     "web_apache::do_restart": "Runs service apache restart.",
     "web_apache::do_enable_default_site": "Enables the default vhost.",
     "web_apache::install_apache": "Installs and configures the Apache2 webserver.",
