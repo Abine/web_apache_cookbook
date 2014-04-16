@@ -78,6 +78,12 @@ attribute "apache2/timeout",
   ],
   :default => "300"
 
+
+attribute "apache2/prefork",
+  :display_name => "Apache PreFork Configs",
+  :description => "Apache PreFork Configs",
+  :type => "hash"
+
 attribute "apache2/prefork/serverlimit",
   :display_name => "Apache PreFork ServerLimit",
   :description => "Set this to the same value as MaxClients. MaxClients = maximum number of server processes allowed to start" +

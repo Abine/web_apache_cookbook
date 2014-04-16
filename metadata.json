@@ -64,6 +64,19 @@
       "display_name": "Apache Timeout",
       "description": "The number of seconds before receives and sends time out. For Avira Servers currently using 15, for all other servers the value should be 300 (the default)"
     },
+  "apache/prefork": {
+      "display_name": "Apache PreFork Configs",
+      "description": "Apache PreFork Configs",
+      "type": "hash",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "required": "required",
+      "recipes": [
+
+      ]
+    },
 
     "apache/prefork/serverlimit": {
       "required": "optional",
