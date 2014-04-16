@@ -14,8 +14,6 @@ default[:web_apache][:log_format] = "combined"
 
 default[:web_apache][:abine_hack] = "false"
 
-default[:apache2][:keepalive] = "On"
-
 
 # worker = multithreaded (when you need a great deal of scalability)
 # prefork = single-threaded (when you need stability or compatibility with older software)
