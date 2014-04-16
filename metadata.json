@@ -21,7 +21,36 @@
   },
   "replacing": {
   },
+
   "attributes": {
+  "apache": {
+      "display_name": "Apache2",
+      "description": "Apache2",
+      "type": "hash",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "required": "required",
+      "recipes": [
+
+      ]
+    },
+    "apache/keepalive": {
+      "required": "optional",
+      "calculated": false,
+      "choice": ["Off", "On"],
+      "default": "On",
+      "type": "string",
+      "recipes": [
+        "apache:default",
+        "web_apache::default",
+        "web_apache::install_apache"
+      ],
+      "display_name": "Apache Keepalive",
+      "description": "HTTP persistent connections"
+    },
+
     "web_apache": {
       "display_name": "apache hash",
       "description": "Apache Web Server",

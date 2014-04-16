@@ -48,6 +48,24 @@ recipe "web_apache::do_disable_maintenance_mode",
 depends "apache2"
 depends "rightscale"
 
+attribute "apache2",
+  :display_name => "Apache2",
+  :description =>
+    "Apache2",
+  :type => "hash"
+
+attribute "apache2/keepalive",
+  :display_name => "Apache Keepalive",
+  :description => "HTTP persistent connections",
+  :required => "optional",
+  :recipes => [
+        "apache:default",
+        "web_apache::default",
+        "web_apache::install_apache"
+  ],
+  :choice => ["Off", "On"],
+  :default => "On"
+
 attribute "web_apache",
   :display_name => "apache hash",
   :description =>
