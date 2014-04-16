@@ -43,7 +43,7 @@
       "default": "On",
       "type": "string",
       "recipes": [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
       ],
@@ -57,7 +57,7 @@
       "default": "300",
       "type": "string",
       "recipes": [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
       ],
@@ -71,7 +71,7 @@
       "default": "400",
       "type": "string",
       "recipes": [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
       ],
@@ -85,7 +85,7 @@
       "default": "400",
       "type": "string",
       "recipes": [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
       ],

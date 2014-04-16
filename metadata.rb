@@ -59,7 +59,7 @@ attribute "apache2/keepalive",
   :description => "HTTP persistent connections",
   :required => "optional",
   :recipes => [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
   ],
@@ -72,7 +72,7 @@ attribute "apache2/timeout",
   "For Avira Servers currently using 15, for all other servers the value should be 300 (the default)",
   :required => "optional",
   :recipes => [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
   ],
@@ -84,7 +84,7 @@ attribute "apache2/serverlimit",
   "For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
   :required => "optional",
   :recipes => [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
   ],
@@ -96,7 +96,7 @@ attribute "apache2/maxclients",
   "For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
   :required => "optional",
   :recipes => [
-        "apache:default",
+        "apache::default",
         "web_apache::default",
         "web_apache::install_apache"
   ],
