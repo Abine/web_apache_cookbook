@@ -55,7 +55,7 @@ attribute "apache2",
   :type => "hash"
 
 attribute "apache2/keepalive",
-  :display_name => "Apache Keepalive",
+  :display_name => "Apache KeepAlive",
   :description => "HTTP persistent connections",
   :required => "optional",
   :recipes => [
@@ -65,6 +65,43 @@ attribute "apache2/keepalive",
   ],
   :choice => ["Off", "On"],
   :default => "On"
+
+attribute "apache2/timeout",
+  :display_name => "Apache Timeout",
+  :description => "The number of seconds before receives and sends time out." +
+  "For Avira Servers currently using 15, for all other servers the value should be 300 (the default)",
+  :required => "optional",
+  :recipes => [
+        "apache:default",
+        "web_apache::default",
+        "web_apache::install_apache"
+  ],
+  :default => "300"
+
+attribute "apache2/serverlimit",
+  :display_name => "Apache ServerLimit",
+  :description => "Set this to the same value as MaxClients. MaxClients = maximum number of server processes allowed to start" +
+  "For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
+  :required => "optional",
+  :recipes => [
+        "apache:default",
+        "web_apache::default",
+        "web_apache::install_apache"
+  ],
+  :default => "400"
+
+attribute "apache2/maxclients",
+  :display_name => "Apache MaxClients",
+  :description => "Set this to the same value as ServerLimit. MaxClients = maximum number of server processes allowed to start" +
+  "For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
+  :required => "optional",
+  :recipes => [
+        "apache:default",
+        "web_apache::default",
+        "web_apache::install_apache"
+  ],
+  :default => "400"
+
 
 attribute "web_apache",
   :display_name => "apache hash",

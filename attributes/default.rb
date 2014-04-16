@@ -14,6 +14,12 @@ default[:web_apache][:log_format] = "combined"
 
 default[:web_apache][:abine_hack] = "false"
 
+default[:apache2][:timeout] = "300"
+
+default[:apache2][:serverlimit] = "400"
+
+default[:apache2][:maxclients] = "400"
+
 # worker = multithreaded (when you need a great deal of scalability)
 # prefork = single-threaded (when you need stability or compatibility with older software)
 # for more info please visit: http://httpd.apache.org/docs/2.0/en/mpm.html

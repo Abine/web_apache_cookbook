@@ -9,8 +9,6 @@ ErrorLog syslog:local1
 <% else -%>
 ErrorLog  <%= node[:apache][:log_dir] %>/error.log
 <% end -%>
-
-KeepAlive <%= node[:web_apache][:KeepAlive] %>
 	
 
 #
