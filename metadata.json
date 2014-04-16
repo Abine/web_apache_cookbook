@@ -65,7 +65,7 @@
       "description": "The number of seconds before receives and sends time out. For Avira Servers currently using 15, for all other servers the value should be 300 (the default)"
     },
 
-    "apache/serverlimit": {
+    "apache/prefork/serverlimit": {
       "required": "optional",
       "calculated": false,
       "default": "400",
@@ -75,11 +75,11 @@
         "web_apache::default",
         "web_apache::install_apache"
       ],
-      "display_name": "Apache ServerLimit",
+      "display_name": "Apache Prefork ServerLimit",
       "description": "Set this to the same value as MaxClients. MaxClients = maximum number of server processes allowed to start. For Avira Servers currently using 80, for all other servers the value should be 400 (the default)"
     },
 
-    "apache/maxclients": {
+    "apache/prefork/maxclients": {
       "required": "optional",
       "calculated": false,
       "default": "400",
@@ -89,7 +89,7 @@
         "web_apache::default",
         "web_apache::install_apache"
       ],
-      "display_name": "Apache MaxClients",
+      "display_name": "Apache Prefork MaxClients",
       "description": "Set this to the same value as ServerLimit. MaxClients = maximum number of server processes allowed to start. For Avira Servers currently using 80, for all other servers the value should be 400 (the default)"
     },
 

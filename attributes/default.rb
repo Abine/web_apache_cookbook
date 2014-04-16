@@ -16,9 +16,9 @@ default[:web_apache][:abine_hack] = "false"
 
 default[:apache2][:timeout] = "300"
 
-default[:apache2][:serverlimit] = "400"
+default[:apache2][:prefork][:serverlimit] = "399"
 
-default[:apache2][:maxclients] = "400"
+default[:apache2][:prefork][:maxclients] = "399"
 
 # worker = multithreaded (when you need a great deal of scalability)
 # prefork = single-threaded (when you need stability or compatibility with older software)

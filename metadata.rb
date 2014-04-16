@@ -78,8 +78,8 @@ attribute "apache2/timeout",
   ],
   :default => "300"
 
-attribute "apache2/serverlimit",
-  :display_name => "Apache ServerLimit",
+attribute "apache2/prefork/serverlimit",
+  :display_name => "Apache PreFork ServerLimit",
   :description => "Set this to the same value as MaxClients. MaxClients = maximum number of server processes allowed to start" +
   "For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
   :required => "optional",
@@ -90,8 +90,8 @@ attribute "apache2/serverlimit",
   ],
   :default => "400"
 
-attribute "apache2/maxclients",
-  :display_name => "Apache MaxClients",
+attribute "apache2/prefork/maxclients",
+  :display_name => "Apache PreFork MaxClients",
   :description => "Set this to the same value as ServerLimit. MaxClients = maximum number of server processes allowed to start" +
   "For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
   :required => "optional",
