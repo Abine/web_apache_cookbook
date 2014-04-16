@@ -62,7 +62,7 @@
         "web_apache::install_apache"
       ],
       "display_name": "Apache Timeout",
-      "description": "The number of seconds before receives and sends time out. For Avira Servers currently using 15, for all other servers the value should be 300 (the default)",
+      "description": "The number of seconds before receives and sends time out. For Avira Servers currently using 15, for all other servers the value should be 300 (the default)"
     },
 
     "apache/serverlimit": {
@@ -76,7 +76,7 @@
         "web_apache::install_apache"
       ],
       "display_name": "Apache ServerLimit",
-      "description": "Set this to the same value as MaxClients. MaxClients = maximum number of server processes allowed to start. For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
+      "description": "Set this to the same value as MaxClients. MaxClients = maximum number of server processes allowed to start. For Avira Servers currently using 80, for all other servers the value should be 400 (the default)"
     },
 
     "apache/maxclients": {
@@ -90,7 +90,7 @@
         "web_apache::install_apache"
       ],
       "display_name": "Apache MaxClients",
-      "description": "Set this to the same value as ServerLimit. MaxClients = maximum number of server processes allowed to start. For Avira Servers currently using 80, for all other servers the value should be 400 (the default)",
+      "description": "Set this to the same value as ServerLimit. MaxClients = maximum number of server processes allowed to start. For Avira Servers currently using 80, for all other servers the value should be 400 (the default)"
     },
 
     "web_apache": {
