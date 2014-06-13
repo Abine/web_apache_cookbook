@@ -15,9 +15,9 @@
 
   # Setup ServerAlias'
   <% if (node[:web_apache][:server_aliases] == 'Production') -%>
-    ServerAlias license.abine.com mm.abine.com email.abine.com mapping.abine.com payments.abine.com fraud.abine.com phone.abine.com
+    ServerAlias tracker.abine.com support.abine.com license.abine.com mm.abine.com email.abine.com mapping.abine.com payments.abine.com fraud.abine.com phone.abine.com
   <% elsif (node[:web_apache][:server_aliases] == 'Stage') -%>
-      ServerAlias staging-license.abine.com staging-mm.abine.com staging-email.abine.com staging-mapping.abine.com staging-payments.abine.com staging-fraud.abine.com staging-phone.abine.com
+      ServerAlias staging-tracker.abine.com staging-support.abine.com staging-license.abine.com staging-mm.abine.com staging-email.abine.com staging-mapping.abine.com staging-payments.abine.com staging-fraud.abine.com staging-phone.abine.com
   <% elsif (node[:web_apache][:server_aliases] == 'Test') -%>
       ServerAlias test-license.abine.com test-mm.abine.com test-email.abine.com test-mapping.abine.com test-payments.abine.com test-fraud.abine.com test-phone.abine.com
   <% elsif (node[:web_apache][:server_aliases] == 'Demo') -%>
