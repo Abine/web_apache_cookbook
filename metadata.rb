@@ -296,3 +296,12 @@ attribute "web_apache/server_aliases",
     "web_apache::setup_frontend"
   ]
 
+attribute "web_apache/lb_type",
+  :display_name => "Choose whether abine.com, maskme, or other",
+  :description => "Currently this is used to determine rules that go into abine.com servers only",
+  :required => "required",
+  :choice => ["abine.com", "maskme", "other"],
+  :recipes => [
+    "web_apache::default",
+    "web_apache::setup_frontend"
+  ]

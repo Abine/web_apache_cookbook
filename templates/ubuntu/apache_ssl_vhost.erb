@@ -63,6 +63,8 @@
   RewriteCond %{REQUEST_FILENAME} !\.php|\.jsp|\.do|\.action$ [NC]
   RewriteRule ^/(.*)$ /$1 [QSA,L]
 
+<% if (node[:web_apache][:lb_type] == 'abine.com') -%>
+
 ##=====================================================================
 #1. Add rewrite rules to write OLD webpages to NEW webpages.
 ##=====================================================================
@@ -440,6 +442,7 @@ RewriteCond %{REQUEST_URI} !^/deletemefaq [NC]
 RewriteRule ^(.*) https://glass.abine.com$1 [P,QSA,L]
 ProxyPassReverse / https://glass.abine.com/
   
+<% end -%>
 
   # Next hop is HAProxy
   RewriteRule ^/(.*)$ http://127.0.0.1:85%{REQUEST_URI} [P,QSA,L]
