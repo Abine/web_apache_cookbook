@@ -288,9 +288,9 @@ attribute "web_apache/maintenance_file",
   ]
 attribute "web_apache/server_aliases",
   :display_name => "Select appropriate environment alias for apache Alias config",
-  :description => "Select appropriate environment for apache Alias config",
+  :description => "Select appropriate environment for apache Alias config, select None if this is abine.com LB",
   :required => "required",
-  :choice => ["Production", "Stage", "Test", "Demo"],
+  :choice => ["Production", "Stage", "Test", "Demo", "None"],
   :recipes => [
     "web_apache::default",
     "web_apache::setup_frontend"
