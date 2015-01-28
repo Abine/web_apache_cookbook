@@ -353,7 +353,6 @@
     ],
       "calculated": false,
       "type": "string"
-    }
 
   },
     "web_apache/lb_type": {
@@ -368,8 +367,8 @@
       "calculated": false,
       "type": "string"
     }
-
   },
+  
   "groupings": {
   },
   "recipes": {
