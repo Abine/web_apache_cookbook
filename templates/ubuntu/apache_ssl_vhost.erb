@@ -442,6 +442,14 @@ RewriteRule ^(.*) https://glass.abine.com$1 [P,QSA,L]
 ProxyPassReverse / https://glass.abine.com/
 
 <% elsif (node[:web_apache][:lb_type] == 'abine.com') -%>
+
+AddType application/x-httpd-php .html .php
+
+## Force HTTPS for DeleteMe Internal pages:
+  RewriteCond %{REQUEST_URI} ^/deleteme/ [NC]
+  RewriteRule ^ https://www.abine.com%{REQUEST_URI} [L,R=301]
+
+  
 ##=====================================================================
 #1. Add rewrite rules to write OLD webpages to NEW webpages.
 ##=====================================================================
@@ -833,7 +841,7 @@ RewriteCond %{REQUEST_URI} !^/deleteme/faq [NC]
 RewriteCond %{REQUEST_URI} !^/deletemefaq [NC]
 RewriteRule ^(.*) https://glass.abine.com$1 [P,QSA,L]
 ProxyPassReverse / https://glass.abine.com/
-  
+
 <% end -%>
 
   # Next hop is HAProxy
@@ -848,7 +856,7 @@ ProxyPassReverse / https://glass.abine.com/
 
   # SSL-specific additions
   SSLEngine on
-  SSLProtocol all -SSLv2
+  SSLProtocol all -SSLv2 -SSLv3
   SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
 
   RequestHeader set X_FORWARDED_PROTO 'https'

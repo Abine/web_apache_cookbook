@@ -58,6 +58,23 @@
   RewriteRule ^/(.*)$ /$1 [QSA,L]
 
   <% if (node[:web_apache][:lb_type] == 'www.abine.com') -%>
+
+  #Force SSL on main pages
+RewriteCond %{REQUEST_URI} ^/index.html [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/index.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/about.html [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/about.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/support.html [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/support.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/legal.html [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/legal.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/press$ [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/press [L,NC]
+
   ##=====================================================================
 #1. Add rewrite rules to write OLD webpages to NEW webpages.
 ##=====================================================================
@@ -448,6 +465,29 @@ RewriteRule ^(.*) http://glass.abine.com$1 [P,QSA,L]
 ProxyPassReverse / http://glass.abine.com/
 
 <% elsif (node[:web_apache][:lb_type] == 'abine.com') -%>
+
+## Force HTTPS for DeleteMe Internal pages:
+  RewriteCond %{REQUEST_URI} ^/deleteme/ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://www.abine.com%{REQUEST_URI} [L,R=301]
+
+#Force SSL on main pages
+RewriteCond %{REQUEST_URI} ^/index.html [NC]
+RewriteRule ^/(.*)$ https://abine.com/index.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/about.html [NC]
+RewriteRule ^/(.*)$ https://abine.com/about.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/support.html [NC]
+RewriteRule ^/(.*)$ https://abine.com/support.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/legal.html [NC]
+RewriteRule ^/(.*)$ https://abine.com/legal.html [L,NC]
+
+RewriteCond %{REQUEST_URI} ^/press$ [NC]
+RewriteRule ^/(.*)$ https://abine.com/press [L,NC]
+
+
 ##=====================================================================
 #1. Add rewrite rules to write OLD webpages to NEW webpages.
 ##=====================================================================
