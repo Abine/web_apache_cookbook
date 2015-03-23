@@ -35,6 +35,15 @@
     Allow from all
   </Directory>
 
+<Location /aoc>
+        SSLRequireSSL
+        SSLCACertificatePath /etc/ssl/certs/
+        SSLVerifyClient require
+        SSLRequire %{SSL_CIPHER} !~ m/^(EXP|NULL)-/ and %{SSL_CLIENT_S_DN_CN} eq "*.encompass-suite.com"
+        SSLVerifyDepth 10
+  </Location>
+
+
   RewriteEngine On
   # Uncomment for rewrite debugging
   #RewriteLog <%= node[:apache][:log_dir] %>/http_rewrite.log

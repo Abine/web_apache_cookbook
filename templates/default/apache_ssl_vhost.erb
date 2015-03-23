@@ -40,6 +40,14 @@
   #RewriteLog <%= node[:apache][:log_dir] %>/http_rewrite_log
   #RewriteLogLevel 9
 
+  <Location /aoc>
+        SSLRequireSSL
+        SSLCACertificatePath /etc/ssl/certs/
+        SSLVerifyClient require
+        SSLRequire %{SSL_CIPHER} !~ m/^(EXP|NULL)-/ and %{SSL_CLIENT_S_DN_CN} eq "*.encompass-suite.com"
+        SSLVerifyDepth 10
+  </Location>
+
   # Include Rewrite rules from server config for maintenance mode.
   # Rewrite rules are not inherited in VirtualHost Directive, so must
   # explicitly include it here.
