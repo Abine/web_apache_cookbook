@@ -77,6 +77,10 @@
 #1. Add rewrite rules to write OLD webpages to NEW webpages.
 ##=====================================================================
 
+#Added this for special military deleteme offer
+RewriteCond %{REQUEST_URI} ^/deleteme/military$ [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/deleteme/landing.php?utm_medium=military [L,NC]
+
 RewriteCond %{REQUEST_URI} !^/maskme/v2/tag.php [NC]
 #RewriteCond %{REQUEST_URI} !^/support/email [NC]
 RewriteCond %{REQUEST_URI} !^/support/email(/?) [NC]

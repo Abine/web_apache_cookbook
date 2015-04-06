@@ -59,6 +59,11 @@
 
   <% if (node[:web_apache][:lb_type] == 'www.abine.com') -%>
 
+#Added this for special military deleteme offer
+RewriteCond %{REQUEST_URI} ^/deleteme/military$ [NC]
+RewriteRule ^/(.*)$ https://www.abine.com/deleteme/landing.php?utm_medium=military [L,NC]
+
+
   #Force SSL on main pages
 RewriteCond %{REQUEST_URI} ^/index.html [NC]
 RewriteRule ^/(.*)$ https://www.abine.com/index.html [L,NC]
